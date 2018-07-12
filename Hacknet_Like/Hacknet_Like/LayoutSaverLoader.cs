@@ -31,17 +31,21 @@ namespace Hacknet_Like {
             mainbar = instance;
         }
 
-        private void LayoutSaverLoader_Load( object sender, EventArgs e ) {
-            closePrompt.MouseEnter += quitButton_MouseEnter;
-            closePrompt.MouseLeave += quitButton_MouseLeave;
-
+        void LoadNearbyXmlFiles() {
             layoutFiles = System.IO.Directory.GetFiles( Application.StartupPath, "*.xml" );
             foreach(string filePath in layoutFiles) {
                 comboBox1.Items.Add( System.IO.Path.GetFileName( filePath ) );
             }
-            if (layoutFiles.Length > 0){
+            if(layoutFiles.Length > 0) {
                 comboBox1.SelectedItem = comboBox1.Items[0];
             }
+        }
+
+        private void LayoutSaverLoader_Load( object sender, EventArgs e ) {
+            closePrompt.MouseEnter += quitButton_MouseEnter;
+            closePrompt.MouseLeave += quitButton_MouseLeave;
+
+            LoadNearbyXmlFiles();
         }
 
         private void closePrompt_Click( object sender, EventArgs e ) {
@@ -61,6 +65,7 @@ namespace Hacknet_Like {
             }
             mainbar.SaveLayoutFile( saveFileName.Text);
             MessageBox.Show( "Layout saved correctly!", "Saving" );
+            LoadNearbyXmlFiles();
         }
 
         private void loadLayoutButton_Click( object sender, EventArgs e ) {
