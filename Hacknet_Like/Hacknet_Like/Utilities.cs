@@ -11,6 +11,7 @@ using System.Collections;
 namespace Hacknet_Like {
     public class Utilities {
         public const string xmlLayoutFileName = "layout.xml";
+        public const string LayoutFilesFolder = "Layouts";
 
         public class Colors {
             public static System.Drawing.Color QuitButtonRed = System.Drawing.Color.FromArgb( 128, 0, 0 );
@@ -24,7 +25,7 @@ namespace Hacknet_Like {
 
             [XmlArray( "TerminalLocations" )]
             [XmlArrayItem( "Location" )]
-            public List<System.Drawing.Point> terminalLocations;
+            public List<System.Drawing.Point> terminalLocations = new List<System.Drawing.Point>();
 
             public void Save(string path) {
                 var serializer = new XmlSerializer( typeof( LayoutContainer ) );

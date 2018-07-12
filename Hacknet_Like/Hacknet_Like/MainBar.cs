@@ -23,15 +23,16 @@ namespace Hacknet_Like {
         public void SaveLayoutFile(string fileName = Utilities.xmlLayoutFileName ) {
             layoutContainer.mainBarLocation = this.Location;
             layoutContainer.terminalLocations.Clear();
+
             foreach(Terminal terminal in terminalsOpened) {
                 layoutContainer.terminalLocations.Add( terminal.Location );
             }
-            layoutContainer.Save( Application.StartupPath + "\\" + fileName );
+            layoutContainer.Save( Application.StartupPath + "\\" + Utilities.LayoutFilesFolder + "\\" + fileName );
         }
 
         public void LoadLayoutFile(string fileName = Utilities.xmlLayoutFileName ) {
-            if(System.IO.File.Exists( Application.StartupPath + "\\" + fileName )) {
-                layoutContainer = Utilities.LayoutContainer.Load( Application.StartupPath + "\\" + fileName );
+            if(System.IO.File.Exists( Application.StartupPath + "\\" + Utilities.LayoutFilesFolder + "\\" + fileName )) {
+                layoutContainer = Utilities.LayoutContainer.Load( Application.StartupPath + "\\" + Utilities.LayoutFilesFolder + "\\" + fileName );
             }
         }
 
@@ -67,7 +68,7 @@ namespace Hacknet_Like {
         }
 
         private void Form1_Load( object sender, EventArgs e ) {
-            if(System.IO.File.Exists( Application.StartupPath + "\\" + Utilities.xmlLayoutFileName )) {
+            if(System.IO.File.Exists( Application.StartupPath + "\\" + Utilities.LayoutFilesFolder + "\\" + Utilities.xmlLayoutFileName )) {
                 LoadLayoutFile();
                 ApplyLayout();
             } else {
