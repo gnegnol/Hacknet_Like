@@ -38,7 +38,7 @@ namespace Hacknet_Like {
                 comboBox1.Items.Add( System.IO.Path.GetFileName( filePath ) );
             }
             if(layoutFiles.Length > 0) {
-                comboBox1.SelectedItem = comboBox1.Items[0];
+                comboBox1.SelectedIndex = comboBox1.Items.IndexOf( "layout.xml" );
             }
         }
 
