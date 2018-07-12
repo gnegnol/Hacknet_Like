@@ -16,6 +16,9 @@ namespace Hacknet_Like {
         MainBar mainBar;
         private string prompt = "C:\\Users\\" + username + ">";
 
+        public delegate void voidDelegate(string[] cmd);
+        public voidDelegate onCommandSent;
+
         public Terminal() {
             InitializeComponent();
         }
@@ -29,6 +32,7 @@ namespace Hacknet_Like {
             terminalTextBox.SelectionStart = terminalTextBox.SelectionLength = 0;
             terminalTextBox.KeyPress += terminalTextBox_KeyPressed;
             terminalTextBox.KeyDown += terminalTextBox_KeyDown;
+            onCommandSent += OnCommandReceived;
         }
         protected override void OnClosed(EventArgs e ) {
             base.OnClosed(e);
@@ -80,12 +84,19 @@ namespace Hacknet_Like {
                     printLine();
                     //((ShellControl)this.Parent).FireCommandEntered( currentCommand );
                     //commandHistory.Add( currentCommand );
+                    onCommandSent( currentCommand.Split( new[] { ' ' } ) );
                 }
                 printPrompt();
             }
         }
 
+        //viene chiamata ogni qual volta l'utente digita e conferma una riga nel cmd. 0=istruzioni, n=parametri
+        void OnCommandReceived(string[] argv) {
 
+        }
+
+
+        #region Internal cmd behaviour
         private void printPrompt() {
             string currentText = terminalTextBox.Text;
             if(currentText.Length != 0 && currentText[currentText.Length - 1] != '\n')
@@ -179,5 +190,6 @@ namespace Hacknet_Like {
             terminalTextBox.Text += text;
             MoveCaretToEndOfText();
         }
+        #endregion
     }
 }

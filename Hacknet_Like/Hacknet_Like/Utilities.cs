@@ -19,13 +19,23 @@ namespace Hacknet_Like {
             public static System.Drawing.Color TerminalButtonGrey = System.Drawing.Color.FromArgb( 153, 153, 153 );
         }
 
+        public struct WindowProperties {
+            public System.Drawing.Point location;
+            public System.Drawing.Point size;
+
+            public WindowProperties( System.Drawing.Point _location, System.Drawing.Point _size) {
+                location = _location;
+                size = _size;
+            }
+        }
+
         [XmlRoot]
         public class LayoutContainer {
             public System.Drawing.Point mainBarLocation;
 
             [XmlArray( "TerminalLocations" )]
             [XmlArrayItem( "Location" )]
-            public List<System.Drawing.Point> terminalLocations = new List<System.Drawing.Point>();
+            public List<WindowProperties> terminalLocations = new List<WindowProperties>();
 
             public void Save(string path) {
                 var serializer = new XmlSerializer( typeof( LayoutContainer ) );

@@ -25,7 +25,7 @@ namespace Hacknet_Like {
             layoutContainer.terminalLocations.Clear();
 
             foreach(Terminal terminal in terminalsOpened) {
-                layoutContainer.terminalLocations.Add( terminal.Location );
+                layoutContainer.terminalLocations.Add( new Utilities.WindowProperties( terminal.Location, (Point)terminal.Size ));
             }
             layoutContainer.Save( Application.StartupPath + "\\" + Utilities.LayoutFilesFolder + "\\" + fileName );
         }
@@ -44,11 +44,12 @@ namespace Hacknet_Like {
             }
             terminalsOpened.Clear();
 
-            foreach(Point location in layoutContainer.terminalLocations) {
+            foreach(Utilities.WindowProperties windowProperty in layoutContainer.terminalLocations) {
                 Terminal terminalForm = new Terminal( this );
                 terminalsOpened.Add( terminalForm );
                 terminalForm.Show();
-                terminalForm.Location = location;
+                terminalForm.Location = windowProperty.location;
+                terminalForm.Size = new Size( windowProperty.size );
             }
         }
 
