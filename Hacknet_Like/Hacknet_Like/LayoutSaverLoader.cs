@@ -39,7 +39,9 @@ namespace Hacknet_Like {
             foreach(string filePath in layoutFiles) {
                 comboBox1.Items.Add( System.IO.Path.GetFileName( filePath ) );
             }
-            comboBox1.SelectedItem = comboBox1.Items[0];
+            if (layoutFiles.Length > 0){
+                comboBox1.SelectedItem = comboBox1.Items[0];
+            }
         }
 
         private void closePrompt_Click( object sender, EventArgs e ) {
