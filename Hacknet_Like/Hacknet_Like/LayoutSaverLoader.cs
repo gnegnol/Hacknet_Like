@@ -32,6 +32,7 @@ namespace Hacknet_Like {
         }
 
         void LoadNearbyXmlFiles() {
+            comboBox1.Items.Clear();
             layoutFiles = System.IO.Directory.GetFiles( Application.StartupPath, "*.xml" );
             foreach(string filePath in layoutFiles) {
                 comboBox1.Items.Add( System.IO.Path.GetFileName( filePath ) );

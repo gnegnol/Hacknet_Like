@@ -22,6 +22,10 @@ namespace Hacknet_Like {
         
         public void SaveLayoutFile(string fileName = Utilities.xmlLayoutFileName ) {
             layoutContainer.mainBarLocation = this.Location;
+            layoutContainer.terminalLocations.Clear();
+            foreach(Terminal terminal in terminalsOpened) {
+                layoutContainer.terminalLocations.Add( terminal.Location );
+            }
             layoutContainer.Save( Application.StartupPath + "\\" + fileName );
         }
 
@@ -33,6 +37,18 @@ namespace Hacknet_Like {
 
         public void ApplyLayout() {
             this.Location = layoutContainer.mainBarLocation;
+
+            while(terminalsOpened.Count != 0) {
+                terminalsOpened[0].Close();
+            }
+            terminalsOpened.Clear();
+
+            foreach(Point location in layoutContainer.terminalLocations) {
+                Terminal terminalForm = new Terminal( this );
+                terminalsOpened.Add( terminalForm );
+                terminalForm.Show();
+                terminalForm.Location = location;
+            }
         }
 
         protected override void WndProc( ref Message m ) {
@@ -60,7 +76,7 @@ namespace Hacknet_Like {
         }
 
         private void quitButton_Click( object sender, EventArgs e ) {
-            SaveLayoutFile();
+            //SaveLayoutFile();
             Application.Exit();
         }
 
@@ -79,7 +95,7 @@ namespace Hacknet_Like {
         }
 
         private void openTerminalButton_Click( object sender, EventArgs e ) {
-            Terminal terminalForm = new Terminal();
+            Terminal terminalForm = new Terminal(this);
             terminalsOpened.Add( terminalForm );
             terminalForm.Show();
         }

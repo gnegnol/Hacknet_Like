@@ -13,6 +13,7 @@ namespace Hacknet_Like {
         string firstOpenText = "Microsoft Windows [Version 10.0.17134.112]" + Environment.NewLine +
                                      "(c) 2018 Microsoft Corporation. All rights reserved." + Environment.NewLine + Environment.NewLine;
         const string username = "LadyGay69";
+        MainBar mainBar;
 
         private void UpdateCmdTextboxLocation() {
             Point cmdLocation = new Point();
@@ -30,12 +31,21 @@ namespace Hacknet_Like {
         public Terminal() {
             InitializeComponent();
         }
+        public Terminal(MainBar mb) {
+            InitializeComponent();
+            mainBar = mb;
+        }
 
         private void Terminal_Load( object sender, EventArgs e ) {
             terminalTextBox.Text = firstOpenText + "C:\\Users\\" + username + ">";
             terminalTextBox.SelectionStart = terminalTextBox.SelectionLength = 0;
             cmdTextbox.KeyPress += cmdTextbox_KeyPressed;
+            
             UpdateCmdTextboxLocation();
+        }
+        protected override void OnClosed(EventArgs e ) {
+            base.OnClosed(e);
+            mainBar.terminalsOpened.Remove( this );
         }
 
         private void cmdTextbox_KeyPressed( object sender, KeyPressEventArgs e ) {
