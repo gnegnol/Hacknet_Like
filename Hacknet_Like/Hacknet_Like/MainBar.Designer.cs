@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.openTerminalButton = new System.Windows.Forms.Button();
             this.quitButton = new System.Windows.Forms.Button();
+            this.layoutSaverButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openTerminalButton
@@ -53,12 +54,26 @@
             this.quitButton.UseVisualStyleBackColor = true;
             this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
             // 
+            // layoutSaverButton
+            // 
+            this.layoutSaverButton.BackgroundImage = global::Hacknet_Like.Properties.Resources.ic_web_black_48dp;
+            this.layoutSaverButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.layoutSaverButton.FlatAppearance.BorderSize = 0;
+            this.layoutSaverButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.layoutSaverButton.Location = new System.Drawing.Point(433, 12);
+            this.layoutSaverButton.Name = "layoutSaverButton";
+            this.layoutSaverButton.Size = new System.Drawing.Size(50, 50);
+            this.layoutSaverButton.TabIndex = 2;
+            this.layoutSaverButton.UseVisualStyleBackColor = true;
+            this.layoutSaverButton.Click += new System.EventHandler(this.layoutSaverButton_Click);
+            // 
             // MainBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(720, 70);
+            this.Controls.Add(this.layoutSaverButton);
             this.Controls.Add(this.openTerminalButton);
             this.Controls.Add(this.quitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -76,6 +91,7 @@
 
         private System.Windows.Forms.Button quitButton;
         private System.Windows.Forms.Button openTerminalButton;
+        private System.Windows.Forms.Button layoutSaverButton;
     }
 }
 

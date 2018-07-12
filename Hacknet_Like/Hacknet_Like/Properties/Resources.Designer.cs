@@ -61,6 +61,16 @@ namespace Hacknet_Like.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_close_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_close_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Icon simile a (Icona).
         /// </summary>
         internal static System.Drawing.Icon ic_picture_in_picture_black_18dp {
@@ -86,6 +96,46 @@ namespace Hacknet_Like.Properties {
         internal static System.Drawing.Bitmap ic_power_settings_new_black_48dp {
             get {
                 object obj = ResourceManager.GetObject("ic_power_settings_new_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_web_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_web_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Icon simile a (Icona).
+        /// </summary>
+        internal static System.Drawing.Icon ic_web_black_48dp1 {
+            get {
+                object obj = ResourceManager.GetObject("ic_web_black_48dp1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_load_alt_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_load_alt_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_save_alt_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_save_alt_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

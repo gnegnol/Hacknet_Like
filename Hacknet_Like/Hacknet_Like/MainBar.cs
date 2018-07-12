@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Collections;
 
 namespace Hacknet_Like {
     public partial class MainBar : Form {
@@ -15,14 +16,24 @@ namespace Hacknet_Like {
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
 
-        //------------------Salvataggio posizione main barra------------------------
-        const string userRoot = "HKEY_CURRENT_USER";
-        const string subkey = "MainBarScreenPosition";
-        const string keyName = userRoot + "\\" + subkey;
-        const string XvalueName = "XPosition";
-        const string YvalueName = "YPosition";
-        //--------------------------------------------------------------------------
+        
+        Utilities.LayoutContainer layoutContainer;
+        public List<Terminal> terminalsOpened = new List<Terminal>();
+        
+        public void SaveLayoutFile(string fileName = Utilities.xmlLayoutFileName ) {
+            layoutContainer.mainBarLocation = this.Location;
+            layoutContainer.Save( Application.StartupPath + "\\" + fileName );
+        }
 
+        public void LoadLayoutFile(string fileName = Utilities.xmlLayoutFileName ) {
+            if(System.IO.File.Exists( Application.StartupPath + "\\" + fileName )) {
+                layoutContainer = Utilities.LayoutContainer.Load( Application.StartupPath + "\\" + fileName );
+            }
+        }
+
+        public void ApplyLayout() {
+            this.Location = layoutContainer.mainBarLocation;
+        }
 
         protected override void WndProc( ref Message m ) {
             base.WndProc( ref m );
@@ -40,13 +51,16 @@ namespace Hacknet_Like {
         }
 
         private void Form1_Load( object sender, EventArgs e ) {
-            this.Location = new System.Drawing.Point( (int)Registry.GetValue( keyName, XvalueName, Screen.PrimaryScreen.Bounds.Width / 2),
-                                                      (int)Registry.GetValue( keyName, YvalueName, Screen.PrimaryScreen.Bounds.Height / 2 ) );
+            if(System.IO.File.Exists( Application.StartupPath + "\\" + Utilities.xmlLayoutFileName )) {
+                LoadLayoutFile();
+                ApplyLayout();
+            } else {
+                layoutContainer = new Utilities.LayoutContainer();
+            }
         }
 
         private void quitButton_Click( object sender, EventArgs e ) {
-            Registry.SetValue( keyName, XvalueName, this.Location.X );
-            Registry.SetValue( keyName, YvalueName, this.Location.Y );
+            SaveLayoutFile();
             Application.Exit();
         }
 
@@ -66,7 +80,12 @@ namespace Hacknet_Like {
 
         private void openTerminalButton_Click( object sender, EventArgs e ) {
             Terminal terminalForm = new Terminal();
+            terminalsOpened.Add( terminalForm );
             terminalForm.Show();
+        }
+
+        private void layoutSaverButton_Click( object sender, EventArgs e ) {
+            new LayoutSaverLoader(this).Show();
         }
     }
 }
