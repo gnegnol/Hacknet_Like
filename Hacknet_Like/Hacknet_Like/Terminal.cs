@@ -191,5 +191,10 @@ namespace Hacknet_Like {
             MoveCaretToEndOfText();
         }
         #endregion
+
+        private void terminalTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

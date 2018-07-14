@@ -15,6 +15,7 @@ namespace Hacknet_Like {
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
+        public Note noteInstance = null;
 
         
         Utilities.LayoutContainer layoutContainer;
@@ -104,6 +105,15 @@ namespace Hacknet_Like {
 
         private void layoutSaverButton_Click( object sender, EventArgs e ) {
             new LayoutSaverLoader(this).Show();
+        }
+
+        private void note_Click(object sender, EventArgs e)
+        {
+            if(noteInstance == null) {
+                Note noteForm = new Note(this);
+                noteInstance = noteForm;
+                noteForm.Show();
+            }
         }
     }
 }

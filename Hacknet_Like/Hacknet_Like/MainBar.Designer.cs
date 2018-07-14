@@ -26,6 +26,7 @@
             this.openTerminalButton = new System.Windows.Forms.Button();
             this.quitButton = new System.Windows.Forms.Button();
             this.layoutSaverButton = new System.Windows.Forms.Button();
+            this.note = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openTerminalButton
@@ -67,12 +68,23 @@
             this.layoutSaverButton.UseVisualStyleBackColor = true;
             this.layoutSaverButton.Click += new System.EventHandler(this.layoutSaverButton_Click);
             // 
+            // note
+            // 
+            this.note.Location = new System.Drawing.Point(198, 13);
+            this.note.Name = "note";
+            this.note.Size = new System.Drawing.Size(77, 45);
+            this.note.TabIndex = 3;
+            this.note.Text = "notes";
+            this.note.UseVisualStyleBackColor = true;
+            this.note.Click += new System.EventHandler(this.note_Click);
+            // 
             // MainBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(720, 70);
+            this.Controls.Add(this.note);
             this.Controls.Add(this.layoutSaverButton);
             this.Controls.Add(this.openTerminalButton);
             this.Controls.Add(this.quitButton);
@@ -92,6 +104,7 @@
         private System.Windows.Forms.Button quitButton;
         private System.Windows.Forms.Button openTerminalButton;
         private System.Windows.Forms.Button layoutSaverButton;
+        private System.Windows.Forms.Button note;
     }
 }
 
