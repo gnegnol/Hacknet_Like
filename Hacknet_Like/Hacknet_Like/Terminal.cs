@@ -92,8 +92,26 @@ namespace Hacknet_Like {
 
         //viene chiamata ogni qual volta l'utente digita e conferma una riga nel cmd. 0=istruzioni, n=parametri
         void OnCommandReceived(string[] argv) {
-
+            string cmd = "";
+            foreach(string s in argv) {
+                cmd += s + " ";
+            }
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.FileName = "CMD.exe";
+            startInfo.Arguments = "/c " + cmd;
+            process.StartInfo = startInfo;
+            process.Start();
+            while(!process.HasExited) {
+                terminalTextBox.Text += process.StandardOutput.ReadLine() + Environment.NewLine;
+                Application.DoEvents();
+            }
+            terminalTextBox.Text += process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
         }
+
 
 
         #region Internal cmd behaviour

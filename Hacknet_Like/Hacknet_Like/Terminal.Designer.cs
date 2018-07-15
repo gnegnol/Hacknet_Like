@@ -31,11 +31,12 @@
             // 
             this.terminalTextBox.BackColor = System.Drawing.Color.Black;
             this.terminalTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.terminalTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.terminalTextBox.Font = new System.Drawing.Font("Ubuntu Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.terminalTextBox.ForeColor = System.Drawing.Color.White;
             this.terminalTextBox.Location = new System.Drawing.Point(0, 0);
             this.terminalTextBox.Multiline = true;
             this.terminalTextBox.Name = "terminalTextBox";
+            this.terminalTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.terminalTextBox.Size = new System.Drawing.Size(824, 374);
             this.terminalTextBox.TabIndex = 1;
             this.terminalTextBox.Text = "Microsoft Windows [Version 10.0.17134.112]\r\n(c) 2018 Microsoft Corporation. All r" +

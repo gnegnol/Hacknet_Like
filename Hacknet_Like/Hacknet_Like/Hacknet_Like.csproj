@@ -136,6 +136,12 @@
   <ItemGroup>
     <None Include="Resources\outline_save_alt_black_18dp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_assignment_black_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_assignment_black_18dp.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

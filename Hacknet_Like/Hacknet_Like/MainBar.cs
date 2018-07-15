@@ -23,6 +23,13 @@ namespace Hacknet_Like {
         
         public void SaveLayoutFile(string fileName = Utilities.xmlLayoutFileName ) {
             layoutContainer.mainBarLocation = this.Location;
+            if(noteInstance != null) {
+                layoutContainer.noteLocation = noteInstance.Location;
+                layoutContainer.noteSize = (Point)noteInstance.Size;
+                layoutContainer.noteOpened = true;
+            } else {
+                layoutContainer.noteOpened = false;
+            }
             layoutContainer.terminalLocations.Clear();
 
             foreach(Terminal terminal in terminalsOpened) {
@@ -51,6 +58,16 @@ namespace Hacknet_Like {
                 terminalForm.Show();
                 terminalForm.Location = windowProperty.location;
                 terminalForm.Size = new Size( windowProperty.size );
+            }
+            if(layoutContainer.noteOpened) {
+                if(noteInstance != null) {
+                    noteInstance.Close();
+                }
+                Note noteForm = new Note( this );
+                noteInstance = noteForm;
+                noteForm.Show();
+                noteForm.Location = layoutContainer.noteLocation;
+                noteForm.Size = new Size(layoutContainer.noteSize);
             }
         }
 

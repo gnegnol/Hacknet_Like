@@ -10,8 +10,9 @@ using System.Collections;
 
 namespace Hacknet_Like {
     public class Utilities {
-        public const string xmlLayoutFileName = "layout.xml";
+        public const string xmlLayoutFileName = "layout.xml";        
         public const string LayoutFilesFolder = "Layouts";
+        public const string xmlNoteFileName = "notes.xml";
 
         public class Colors {
             public static System.Drawing.Color QuitButtonRed = System.Drawing.Color.FromArgb( 128, 0, 0 );
@@ -28,10 +29,43 @@ namespace Hacknet_Like {
                 size = _size;
             }
         }
+        public struct NoteInfo {
+            public string noteName;
+            public string noteContent;
+
+            public NoteInfo(string name, string content) {
+                noteName = name;
+                noteContent = content;
+            }
+        }
+
+        [XmlRoot]
+        public class NotesContainer {
+            [XmlArray( "NoteInfos" )]
+            [XmlArrayItem( "NoteInfo" )]
+            public List<NoteInfo> noteInfos = new List<NoteInfo>();
+
+            public void Save( string path ) {
+                var serializer = new XmlSerializer( typeof( NotesContainer ) );
+                using(var stream = new FileStream( path, FileMode.Create )) {
+                    serializer.Serialize( stream, this );
+                }
+
+            }
+            public static NotesContainer Load( string path ) {
+                var serializer = new XmlSerializer( typeof( NotesContainer ) );
+                using(var stream = new FileStream( path, FileMode.Open )) {
+                    return serializer.Deserialize( stream ) as NotesContainer;
+                }
+            }
+        }
 
         [XmlRoot]
         public class LayoutContainer {
             public System.Drawing.Point mainBarLocation;
+            public System.Drawing.Point noteLocation;
+            public System.Drawing.Point noteSize;
+            public bool noteOpened;
 
             [XmlArray( "TerminalLocations" )]
             [XmlArrayItem( "Location" )]

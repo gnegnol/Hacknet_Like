@@ -35,7 +35,7 @@
             this.openTerminalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.openTerminalButton.FlatAppearance.BorderSize = 0;
             this.openTerminalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openTerminalButton.Location = new System.Drawing.Point(335, 10);
+            this.openTerminalButton.Location = new System.Drawing.Point(68, 12);
             this.openTerminalButton.Name = "openTerminalButton";
             this.openTerminalButton.Size = new System.Drawing.Size(50, 50);
             this.openTerminalButton.TabIndex = 1;
@@ -61,7 +61,7 @@
             this.layoutSaverButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.layoutSaverButton.FlatAppearance.BorderSize = 0;
             this.layoutSaverButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.layoutSaverButton.Location = new System.Drawing.Point(433, 12);
+            this.layoutSaverButton.Location = new System.Drawing.Point(124, 12);
             this.layoutSaverButton.Name = "layoutSaverButton";
             this.layoutSaverButton.Size = new System.Drawing.Size(50, 50);
             this.layoutSaverButton.TabIndex = 2;
@@ -70,11 +70,14 @@
             // 
             // note
             // 
-            this.note.Location = new System.Drawing.Point(198, 13);
+            this.note.BackgroundImage = global::Hacknet_Like.Properties.Resources.ic_assignment_black_48dp;
+            this.note.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.note.FlatAppearance.BorderSize = 0;
+            this.note.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.note.Location = new System.Drawing.Point(12, 12);
             this.note.Name = "note";
-            this.note.Size = new System.Drawing.Size(77, 45);
+            this.note.Size = new System.Drawing.Size(50, 50);
             this.note.TabIndex = 3;
-            this.note.Text = "notes";
             this.note.UseVisualStyleBackColor = true;
             this.note.Click += new System.EventHandler(this.note_Click);
             // 
