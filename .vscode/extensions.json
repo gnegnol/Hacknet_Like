@@ -4,10 +4,10 @@
 
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
-		ms-vscode.csharp,
-		jchannon.csharpextensions,
-		rebornix.project-snippets,
-		dotjoshjohnson.xml
+		"ms-vscode.csharp",
+		"jchannon.csharpextensions",
+		"rebornix.project-snippets",
+		"dotjoshjohnson.xml"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [
